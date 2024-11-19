@@ -1,0 +1,49 @@
+class Assignment():
+    def __init__(self,title,daysTillDue,timeToComplete,weight,classGrade):
+        self.title = title
+        self.daysTillDue = daysTillDue
+        self.timeToComplete = timeToComplete
+        self.weight = weight
+        self.classGrade = classGrade
+        self.points=0
+
+homework=[]
+essay=Assignment("essay",5,2,20,95)
+homework.append(essay)
+hw=Assignment("homework",3,.5,1,100)
+homework.append(hw)
+lab=Assignment("lab",6,.5,1,100)
+homework.append(lab)
+
+daysTillDue={}
+timeToComplete={}
+weight={}
+classgrade={}
+points={}
+
+for obs in homework:
+    daysTillDue[obs.title]=obs.daysTillDue
+sort=sorted(daysTillDue,key=lambda x:x[1],reverse=True)
+for i in range(len(homework)):
+    print(sort[i])
+    points[sort[i]]=0
+for i in range(len(homework)):
+    points[sort[i]]+=i
+for obs in homework:
+    timeToComplete[obs.title]=obs.timeToComplete
+sort=sorted(timeToComplete,key=lambda x:x[1])
+for i in range(len(homework)):
+    points[sort[i]]+=i
+for obs in homework:
+    weight[obs.title]=obs.weight
+sort=sorted(weight,key=lambda x:x[1])
+for i in range(len(homework)):
+    points[sort[i]]+=i
+for obs in homework:
+    classgrade[obs.title]=obs.classGrade
+    sort=sorted(classgrade,key=lambda x:x[1])
+for i in range(len(homework)):
+    points[sort[i]]+=i
+# for h in homework:
+#     print(h.points)
+print(points)
